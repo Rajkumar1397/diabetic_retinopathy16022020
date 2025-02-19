@@ -13,6 +13,8 @@ import cv2
 from matplotlib import cm
 #import pandas as pd
 import pywt
+from sklearn.metrics import accuracy_score
+from sklearn.neighbors import KNeighborsClassifier
 immatrix=[]
 im_unpre = []
 path ="D:\sample\*.*"
@@ -221,3 +223,10 @@ for i in k:
 y_train
 clf.fit(imm_train, y_train)
 y_pred = clf.predict(imm_kmean)
+accuracy_score(Y,y_pred)
+
+
+neigh = KNeighborsClassifier(n_neighbors=3)
+neigh.fit(imm_train, y_train) 
+y_pred2=neigh.predict(imm_kmean)
+neigh.score(imm_kmean,Y)
